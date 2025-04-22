@@ -33,6 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'address' => $address
         ];
     }
+
+    header('Location: index.php');
+    exit;
 }
 
 // var_dump($_SESSION['student']);
@@ -111,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 validate_address.innerHTML = "Địa chỉ không được để trống";
                 validate = false;
             }
+            
             return validate;
         }
     </script>
