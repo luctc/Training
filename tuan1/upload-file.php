@@ -5,11 +5,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     echo "<b>File Size: </b>" . $_FILES["uploadfile"]["size"] / 1024 . "<br>";
     echo "<b>Store in: </b>" . $_FILES["uploadfile"]["tmp_name"] . "<br>";
 
-    if (file_exists($_FILES["uploadfile"]["name"])) {
-        echo "<h3>The file already exists</h3>";
+    if($_FILES["uploadfile"]["tmp_name"] ==''){
+        echo '<h3>Vui lòng chọn ảnh</h3>';
+    } else if (file_exists("uploads/" . $_FILES["uploadfile"]["name"])) {
+        echo "<h3>ảnh đã tồn tại</h3>";
     } else {
-        move_uploaded_file($_FILES["uploadfile"]["tmp_name"], "upload/" . $_FILES["uploadfile"]["name"]);
-        echo "<h3>File Successfully Uploaded</h3>";
+        move_uploaded_file($_FILES["uploadfile"]["tmp_name"], "uploads/" . $_FILES["uploadfile"]["name"]);
+        echo "<h3>Thêm ảnh thành công</h3>";
     }
 }
 ?>
