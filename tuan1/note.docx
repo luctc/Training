@@ -1,4 +1,4 @@
-1. PHP Cơ Bản:
+1. PHP CƠ BẢN:
 
 
 
@@ -58,6 +58,7 @@ my-php-project/
 - Toán tử điều kiện: ? : (toán tử ba ngôi) 
 vd: $age >= 18 ? 'đã trưởng thành' : 'chưa trưởng thành';
 - Toán tử mảng: [] (khởi tạo mảng), => (gán giá trị cho khóa trong mảng kết hợp)
+
 
 
 
@@ -192,7 +193,7 @@ vd: require_once 'config.php';
 
 
 
-2. Git Cơ Bản:
+2. GIT CƠ BẢN:
 - Git là gì?
 Git là một hệ thống quản lý phiên bản phân tán, cho phép nhiều người làm việc trên cùng một dự án mà không bị xung đột. 
 Git giúp theo dõi các thay đổi trong mã nguồn và dễ dàng quay lại các phiên bản trước đó.
@@ -202,8 +203,7 @@ Git giúp theo dõi các thay đổi trong mã nguồn và dễ dàng quay lại
 cách cài đặt git:
 - Cài đặt Git trên Windows:
     - Tải xuống Git từ trang web chính thức: https://git-scm.com/download/win
-    - Chạy tệp cài đặt và làm theo hướng dẫn
-
+    - Chạy tệp cài đặt
 
 
 - Các lệnh cơ bản trong Git:
@@ -212,13 +212,213 @@ cách cài đặt git:
 + git add <file>: Thêm tệp vào khu vực staging để chuẩn bị cho việc commit.
 + git commit -m "message": Lưu các thay đổi trong khu vực staging vào kho Git với một thông điệp mô tả.
 + git status: Kiểm tra trạng thái của kho Git, xem các tệp đã thay đổi và chưa được commit.
-+ git branch: Liệt kê các nhánh trong kho Git hiện tại.
++ git branch: 	Xem danh sách nhánh.
 + git checkout <branch>: Chuyển đổi sang nhánh khác.
 + git merge <branch>: Gộp nhánh khác vào nhánh hiện tại.
-+ git pull: Tải về và gộp các thay đổi từ kho Git từ xa.
++ git pull: Lấy code mới về
++ git push: Đẩy code lên 
 
 
 
+3. JAVASCRIPT CƠ BẢN:
+
+
+my-js-project/
+│
+├── index.html              # Trang HTML chính
+├── style.css               # File CSS cho giao diện
+├── script.js               # File JavaScript chính
+│
+├── /assets/               # Thư mục chứa tài nguyên tĩnh
+│   ├── /images/            # Hình ảnh
+│   └── /fonts/             # Font chữ (nếu có)
+│
+├── /js/                   # Nơi chứa nhiều file JS nếu tách nhỏ
+│   ├── main.js             # JS chính (hoặc import từ đây)
+│   └── helper.js           # Hàm phụ trợ
+│
+├── /css/                  # CSS nếu chia tách nhiều file
+│   └── reset.css
+│
+└── README.md              # Mô tả dự án
+
+
+(*) Biến trong JavaScript:
+- Biến là nơi lưu trữ dữ liệu, có thể thay đổi trong quá trình thực thi chương trình.
+vd: var name = 'Luc'; // Biến toàn cục
+    let age = 22; // Biến cục bộ (block scope)
+    const PI = 3.14; // Biến hằng (không thể thay đổi giá trị)
 
 
 
+(*) Kiểu dữ liệu trong JavaScript:
+- String: 'Hello', "World"
+- Number: 42, 3.14
+- Boolean: true, false
+- Object: { name: 'Luc', age: 22 }
+- Array: [1, 2, 3, 4, 5]
+- Function: function() { return 'Hello'; }
+- Null: null
+- Undefined: undefined (biến chưa được gán giá trị)
+
+
+
+(*) Các toán tử trong JavaScript:
+- Toán tử số học: +, -, *, /, %, ** (lũy thừa)
+- Toán tử so sánh: ==, ===, !=, !==, >, <, >=, <=
+- Toán tử logic: &&, ||, !
+- Toán tử gán: =, +=, -=, *=, /=, %=
+- Toán tử điều kiện: ? : (toán tử ba ngôi)
+vd: let age = 18;
+    let message = (age >= 18) ? 'Trưởng thành' : 'Chưa trưởng thành';
+    console.log(message); // Kết quả: Trưởng thành
+- Toán tử mảng: [] (khởi tạo mảng), => (gán giá trị cho khóa trong mảng kết hợp)
+    
+    
+    
+(*) Câu lệnh điều kiện:
+if, else, elseif, switch
+vd:
+if (age >= 18) {
+    console.log("Bạn đã trưởng thành.");
+} elseif (age >= 13) {
+    console.log("Bạn là thanh thiếu niên.");
+} else {
+    console.log("Bạn là trẻ em.");
+}
+
+
+
+(*) Vòng lặp:
+- for: lặp với số lần xác định trước
+vd: for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+- while
+- do while
+- foreach
+
+
+
+(*) Hàm trong JavaScript:
+- Hàm là một khối mã có thể tái sử dụng, giúp tổ chức mã nguồn và giảm thiểu sự lặp lại.
+vd: function sayHello() {
+  console.log("Xin chào!");
+}
+sayHello(); 
+
+
+
+(*) Mảng trong JavaScript:
+- mảng chỉ số:
+vd: let fruits = ['apple', 'banana', 'orange'];
+console.log(fruits[0]); // apple
+console.log(fruits[1]); // banana
+
+- mảng kết hợp:
+vd: let person = {
+  name: 'Luc',
+  age: 22,
+  city: 'Hanoi'
+};
+console.log(person['name']); // Luc
+
+- mảng đối tượng:
+vd: let students = [
+  { name: 'Luc', age: 22 },
+  { name: 'Nam', age: 23 },
+  { name: 'Hanh', age: 24 }
+];
+console.log(students[0].name); // Luc
+
+-mảng đa chiều:
+vd: let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+console.log(matrix[1][2]); // 6
+
+
+
+(*) Chuỗi trong JavaScript:
+- Chuỗi là một dãy ký tự, có thể được định nghĩa bằng dấu nháy đơn hoặc nháy kép.
+vd: let name = 'Luc'; // Dùng dấu nháy đơn
+    let name = "Luc"; // Dùng dấu nháy kép
+    let name = `Luc`; // Dùng dấu nháy ngược (template literals)
+
+-các hàm xử lý chuỗi:
+    + str.length : Độ dài chuỗi
+    + str.toUpperCase() : Chuyển in hoa
+    + str.toLowerCase() : Chuyển in thường
+    + str.replace("a", "b") : Thay thế chuỗi
+    + str.trim() : Xoá khoảng trắng 2 đầu
+
+vd: let str = "  Hello World!  ";
+    console.log(str.length); // 15
+    console.log(str.toUpperCase()); // "  HELLO WORLD!  "
+    console.log(str.toLowerCase()); // "  hello world!  "
+    console.log(str.replace("World", "JavaScript")); // "  Hello JavaScript!  "
+    console.log(str.trim()); // "Hello World!"
+
+
+
+(*) Dom trong JavaScript:
+
+- Các cách chọn phần tử trong DOM:
+    + document.getElementById('id') : Lấy 1 phần tử theo id
+    + document.getElementsByClassName('class') : Chọn theo class
+    + document.getElementsByTagName('tag') : Chọn theo thẻ
+    + document.querySelector('selector') : Lấy phần tử đầu tiên khớp với selector
+    + document.querySelectorAll('selector') : Trả về danh sách tất cả phần tử khớp với selector
+    
+- Một số thao tác phổ biến:
+        Thuộc tính              Dùng cho                               Giá trị                    Tác dụng                                     Ví dụ
+    + value	            <input>, <textarea>, <select>	    Dữ liệu người dùng nhập	    Lấy/gán giá trị nhập liệu	                    input.value = "abc"
+    + textContent	    Mọi phần tử HTML	                Chỉ là văn bản (text)	    Lấy/gán nội dung hiển thị (bỏ qua thẻ HTML)	    p.textContent = "Hello"
+    + innerHTML	        Mọi phần tử HTML	                Bao gồm text + HTML tag	    Lấy/gán nội dung HTML bên trong	                div.innerHTML = "<b>Bold</b>"
+
+
+
+(*) Làm việc với array và object: map, filter, reduce, forEach, find, some, every
+
+- forEach(): Duyệt qua từng phần tử trong mảng, Không trả về giá trị
+vd: let arr = [1, 2, 3];
+arr.forEach(function(num, index) {
+  console.log(`Phần tử ${index}:`, num);
+});
+
+- map(): Tạo mảng mới bằng cách biến đổi từng phần tử, Trả về mảng mới
+vd: let nums = [1, 2, 3];
+let doubled = nums.map(num => num * 2); // [2, 4, 6]
+console.log(doubled);
+
+- filter():Lọc ra các phần tử thoả điều kiện, Trả về mảng mới
+vd: let nums = [1, 2, 3, 4, 5];
+let even = nums.filter(num => num % 2 === 0); // [2, 4]
+console.log(even);
+
+- reduce(): Dùng để tính toán, cộng dồn, trả về 1 giá trị duy nhất
+vd: let nums = [1, 2, 3, 4];
+let sum = nums.reduce((acc, curr) => acc + curr, 0); // 👉 10
+console.log(sum);
+    + acc: giá trị tích luỹ
+    + curr: phần tử hiện tại
+    + 0: giá trị khởi tạo
+
+- find(): Tìm phần tử đầu tiên thoả mãn điều kiện, Trả về phần tử đó, nếu không có thì trả về undefined
+vd: let users = [
+  { name: "An", age: 22 },
+  { name: "Bình", age: 30 }
+];
+
+let user = users.find(u => u.age > 25);
+console.log(user); // 👉 { name: "Bình", age: 30 }
+
+- some(): Trả về true nếu ít nhất 1 phần tử thoả mãn điều kiện
+vd: let ages = [12, 17, 25];
+let hasAdult = ages.some(age => age >= 18); // 👉 true
+
+- every(): Trả về true nếu tất cả phần tử đều thoả điều kiện
+vd: let ages = [22, 30, 25];
+let allAdults = ages.every(age => age >= 18); // 👉 true
