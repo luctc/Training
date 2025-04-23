@@ -1,0 +1,221 @@
+1. PHP Cơ Bản:
+
+
+
+(*) Cấu trúc thư mục cho một dự án PHP cơ bản
+my-php-project/
+│
+├── index.php                # File chính, entry point của website
+├── .htaccess                # Cấu hình server (nếu dùng Apache)
+├── config/                  # Cấu hình (CSDL, constants, môi trường)
+│   └── config.php
+│
+├── models/                  # Xử lý truy vấn dữ liệu 
+│   └── user.php
+│
+├── includes/                # Các file tái sử dụng như kết nối DB, hàm chung
+│   ├── db.php
+│   └── functions.php
+│
+├── public/                  # Tài nguyên tĩnh (ảnh, JS, CSS)
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   └── uploads/             # Thư mục chứa ảnh khi upload 
+│
+├── templates/               # Các phần giao diện dùng lại (header, footer)
+│   ├── header.php
+│   └── footer.php
+│
+├── pages/                   # Các trang nội dung (home.php, about.php,…)
+│   ├── home.php
+│   └── about.php
+│
+└── assets/                  # Tài nguyên nội bộ (logo, fonts, v.v.)
+
+
+
+(*) Biến là nơi lưu trữ dữ liệu: $name = 'Luc';
+
+
+
+(*) Kiểu dữ liệu trong PHP:
+- String: $name = 'Luc';
+- Integer: $age = 25;
+- Float(số thực): $height = 1.75;
+- Boolean: $isStudent = true;
+- Array: $fruits = array('apple', 'banana', 'orange');
+- Object: $car = new Car();
+- Null: $value = null;
+
+
+
+(*) Các toán tử trong PHP:
+- Toán tử số học: +, -, *, /, %(chia lấy dư), **(lũy thừa)
+- Toán tử so sánh: ==, ===, !=, !==, >, <, >=, <=
+- Toán tử logic: &&, ||, !
+- Toán tử gán: =, +=, -=, *=, /=, .= (nối chuỗi)
+- Toán tử điều kiện: ? : (toán tử ba ngôi) 
+vd: $age >= 18 ? 'đã trưởng thành' : 'chưa trưởng thành';
+- Toán tử mảng: [] (khởi tạo mảng), => (gán giá trị cho khóa trong mảng kết hợp)
+
+
+
+(*) Câu lệnh điều kiện:
+if, else, elseif, switch
+vd:
+if ($age >= 18) {
+    echo "Bạn đã trưởng thành.";
+} elseif ($age >= 13) {
+    echo "Bạn là thanh thiếu niên.";
+} else {
+    echo "Bạn là trẻ em.";
+}
+
+- switch : dùng để kiểm tra nhiều điều kiện khác nhau dựa trên một biến.
+switch ($day) {
+    case 'Monday':
+        echo "Hôm nay là thứ Hai.";
+        break;
+    case 'Tuesday':
+        echo "Hôm nay là thứ Ba.";
+        break;
+    default:
+        echo "Hôm nay không phải thứ Hai hay thứ Ba.";
+}
+
+
+
+(*) Vòng lặp: 
+- for: lặp với số lần xác định trước
+vd: for ($i = 0; $i < 10; $i++) {
+    echo $i;
+}
+
+- while: lặp khi điều kiện đúng(nếu điều kiện sai thì dừng lại, hoặc điều kiện sai ngay từ đầu thì không chạy vòng lặp)
+vd: $i = 1;
+while ($i <= 10) {
+    echo $i;
+    $i++;
+}
+
+- do while: lặp ít nhất một lần, sau đó kiểm tra điều kiện(nếu điều kiện sai thì dừng lại, đúng thì tiếp tục)
+vd: $i = 1;
+do {
+    echo $i;
+    $i++;
+} while ($i <= 10);
+
+- foreach: lặp qua từng phần tử trong mảng
+vd: $fruits = array('apple', 'banana', 'orange');
+foreach ($fruits as $fruit) {
+    echo $fruit;
+}
+
+
+
+(*) Hàm trong PHP:
+- Hàm là một khối mã có thể tái sử dụng, giúp tổ chức mã nguồn và giảm thiểu sự lặp lại.
+vd: $name = 'Luc';
+function greet($name) {
+    return "Hello, " . $name . "!";
+}
+echo greet($name); // Kết quả: Hello, Luc!
+
+- Hàm có thể nhận tham số và trả về giá trị.
+vd: function add($a, $b) {
+    return $a + $b;
+}
+echo add(5, 10); // Kết quả: 15
+
+
+
+(*) Mảng trong PHP:
+- Mảng là một biến có thể chứa nhiều giá trị khác nhau.
+
+- Mảng 1 chiều: Lưu trữ dữ liệu cơ bản.
+
+- Mảng chỉ số: sử dụng chỉ số số nguyên để truy cập các phần tử.
+vd: $fruits = ['apple', 'banana', 'orange'];
+- Mảng kết hợp: sử dụng khóa (key) để truy cập các phần tử.
+vd: $person = [
+    'name' => 'Luc', 
+    'age' => 22, 
+    'city' => 'Hanoi'
+];
+
+- Mảng đa chiều: mảng lồng mảng(lưu trữ dữ liệu phức tạp ).
+vd: mảng 2 chiều:  
+$students = [
+    ['name' => 'Luc', 'age' => 22],
+    ['name' => 'Nam', 'age' => 23],
+    ['name' => 'Hanh', 'age' => 24]
+];
+
+
+
+(*) Chuỗi trong PHP:
+- Chuỗi là một dãy ký tự, có thể được định nghĩa bằng dấu nháy đơn hoặc nháy kép.
+vd: $name = 'Luc'; // Dùng dấu nháy đơn
+    $name = "Luc"; // Dùng dấu nháy kép
+
+- Các hàm xử lý chuỗi phổ biến trong PHP:
+    - strlen(): Đếm số ký tự trong chuỗi.
+    - strtoupper(): Chuyển đổi chuỗi thành chữ hoa.
+    - strtolower(): Chuyển đổi chuỗi thành chữ thường.
+    - substr(): Lấy một phần của chuỗi.
+    - str_replace(): Thay thế một chuỗi bằng một chuỗi khác.
+    - strpos(): Tìm vị trí của một chuỗi trong chuỗi khác.
+    - explode(): Tách chuỗi thành mảng dựa trên một ký tự phân cách.
+    - implode(): Kết hợp các phần tử của mảng thành một chuỗi, sử dụng một ký tự phân cách.
+    - trim(): Xóa khoảng trắng ở đầu và cuối chuỗi.
+    - strrev(): Đảo ngược chuỗi.
+    - str_repeat(): Lặp lại chuỗi một số lần nhất định.
+
+
+- Các phép toán trên chuỗi:
+vd: $str1 = "Công ";
+    $str2 = "Lực";
+    $result = $str1 . " " . $str2; // Nối chuỗi
+    echo $result; // Kết quả: Công Lực
+
+
+
+(*) Include/Require:
+- Include: Dùng để chèn nội dung từ một file khác vào file hiện tại. Nếu file không tồn tại, PHP sẽ cảnh báo nhưng vẫn tiếp tục thực thi mã.
+vd: include 'header.php'; 
+- Include_once: Tương tự như include, nhưng nếu file đã được chèn trước đó thì sẽ không chèn lại.
+
+- Require: Tương tự như include, nhưng nếu file không tồn tại, PHP sẽ dừng thực thi mã và báo lỗi.
+- Require_once: Chỉ chèn file một lần duy nhất, nếu đã chèn trước đó thì sẽ không chèn lại.
+vd: require_once 'config.php';
+
+
+
+2. Git Cơ Bản:
+- Git là gì?
+Git là một hệ thống quản lý phiên bản phân tán, cho phép nhiều người làm việc trên cùng một dự án mà không bị xung đột. 
+Git giúp theo dõi các thay đổi trong mã nguồn và dễ dàng quay lại các phiên bản trước đó.
+
+
+
+cách cài đặt git:
+- Cài đặt Git trên Windows:
+    - Tải xuống Git từ trang web chính thức: https://git-scm.com/download/win
+    - Chạy tệp cài đặt và làm theo hướng dẫn
+
+
+
+- Các lệnh cơ bản trong Git:
++ git init: Khởi tạo một kho Git mới trong thư mục hiện tại.
++ git clone <url>: Tải repo có sẵn về máy.
++ git add <file>: Thêm tệp vào khu vực staging để chuẩn bị cho việc commit.
++ git commit -m "message": Lưu các thay đổi trong khu vực staging vào kho Git với một thông điệp mô tả.
++ git status: Kiểm tra trạng thái của kho Git, xem các tệp đã thay đổi và chưa được commit.
++ git branch: Liệt kê các nhánh trong kho Git hiện tại.
++ git checkout <branch>: Chuyển đổi sang nhánh khác.
++ git merge <branch>: Gộp nhánh khác vào nhánh hiện tại.
++ git pull: Tải về và gộp các thay đổi từ kho Git từ xa.
+
+
+
