@@ -1,0 +1,120 @@
+- Trong cơ sở dữ liệu (CSDL), cấu trúc thường được tổ chức theo mô hình bảng (table).
+
+1. Cơ sở dữ liệu (Database) 
+- Là một tập hợp có tổ chức các bảng chứa dữ liệu liên quan. 
+Ví dụ: một CSDL quản lý sinh viên có thể gồm các bảng như SinhVien, MonHoc...
+- CREATE DATABASE QuanLySinhVien;
+
+
+2. Bảng (Table)
+- Là một cấu trúc dữ liệu gồm các dòng và các cột, giống như một bảng Excel.
+- Mỗi bảng chứa dữ liệu của một loại thực thể.
+Ví dụ: Bảng KhachHang lưu thông tin khách hàng.
+- CREATE TABLE SinhVien (
+    MaSV CHAR(10) PRIMARY KEY,
+    HoTen NVARCHAR(100),
+    NgaySinh DATE,
+    Lop NVARCHAR(20),
+);
+
+- CREATE TABLE MonHoc (
+    MaMH CHAR(10) PRIMARY KEY,
+    TenMH NVARCHAR(100),
+    SoTinChi INT
+);
+
+- CREATE TABLE DiemThi (
+    MaSV CHAR(10),
+    MaMH CHAR(10),
+    Diem FLOAT,
+    PRIMARY KEY (MaSV, MaMH),
+    FOREIGN KEY (MaSV) REFERENCES SinhVien(MaSV),
+    FOREIGN KEY (MaMH) REFERENCES MonHoc(MaMH)
+);
+
+
+3. Cột (Column)
+- Đại diện cho thuộc tính của dữ liệu.
+- Mỗi cột có một tên và một kiểu dữ liệu.
+Ví dụ: trong bảng KhachHang, các cột có thể là: MaSV, HoTen, Email, NgaySinh.
+
+4. Dòng(hay còn gọi là Bản ghi)
+- Mỗi dòng là một bản ghi duy nhất, chứa dữ liệu cho một đối tượng cụ thể.
+Ví dụ: một dòng trong bảng KhachHang có thể là thông tin của một khách hàng tên Nguyễn Văn A.
+
+Ví dụ chi tiết: bảng KhachHang
+  MaSV  |       HoTen      |   Lop  | NgaySinh
+KH01    | Nguyễn Văn A     | 12A1   | 1990-01-01
+KH02    | Trần Thị B       | 12A1   | 1985-05-12
+
+
+
+
+(*). CÂU LỆNH SQL CƠ BẢN
+
+1. THÊM DỮ LIỆU (INSERT)
+
+- INSERT INTO SinhVien VALUES
+('SV001', N'Nguyễn Văn A', '2003-05-10', '12A1'),
+('SV002', N'Trần Thị B',   '2003-06-15', '12A1'),
+('SV003', N'Lê Văn C',     '2002-07-20', '12A2');
+
+- INSERT INTO MonHoc VALUES
+('MH01', N'Toán', 3),
+('MH02', N'Văn', 2),
+('MH03', N'Anh', 3);
+
+- INSERT INTO DiemThi VALUES
+('SV001', 'MH01', 8.5),
+('SV001', 'MH02', 7.0),
+('SV002', 'MH01', 6.5),
+('SV002', 'MH03', 9.0),
+('SV003', 'MH02', 5.5),
+('SV003', 'MH03', 4.0);
+
+
+
+2. CẬP NHẬT DỮ LIỆU (UPDATE)
+  UPDATE SinhVien
+  SET Lop = '12A3'
+  WHERE MaSV = 'SV001';
+
+3. XÓA DỮ LIỆU (DELETE)
+  DELETE FROM SinhVien WHERE MaSV = 'SV001';
+
+4. TRUY VẤN DỮ LIỆU (SELECT)
+  SELECT * FROM SinhVien; 
+
+- WHERE kết hợp với ORDER BY: 
+  + SELECT * FROM diemthi WHERE Diem >= 6 ORDER BY Diem DESC  
+
+- ORDER BY – Sắp xếp kết quả truy vấn(Sắp xếp kết quả theo một hoặc nhiều cột. Mặc định là tăng dần (ASC), muốn giảm thì thêm DESC.)
+  + SELECT * FROM SinhVien ORDER BY Lop ASC, HoTen DESC;
+
+- GROUP BY – Nhóm dữ liệu để tính toán (Gom nhóm bản ghi có giá trị giống nhau.
+Thường dùng với hàm tổng hợp như COUNT(), AVG(), SUM(), MAX(), MIN()...)
+  + SELECT Lop, COUNT(*) AS SoLuong
+  FROM SinhVien
+  GROUP BY Lop;
+
+- HAVING – Lọc dữ liệu sau khi nhóm (GROUP BY)
+  + Lọc kết quả của nhóm.
+  + Chỉ dùng khi có GROUP BY.
+  + Cho phép so sánh với hàm tổng hợp như AVG(), COUNT(), SUM()…
+  + SELECT MaSV, AVG(Diem) AS DiemTrungBinh
+  FROM DiemThi
+  GROUP BY MaSV
+  HAVING AVG(Diem) < 6.0;
+
+
+- JOIN – Kết hợp dữ liệu từ nhiều bảng 
+  + SELECT SV.HoTen, MH.TenMH, DT.Diem
+  FROM DiemThi DT
+  JOIN SinhVien SV ON DT.MaSV = SV.MaSV
+  JOIN MonHoc MH ON DT.MaMH = MH.MaMH;
+
+(*) Lưu ý: 
+- WHERE – lọc dòng trước khi nhóm
+- GROUP BY – gom nhóm dữ liệu
+- HAVING – lọc kết quả sau khi GROUP BY (thường lọc theo hàm tổng hợp)
+- ORDER BY – sắp xếp kết quả
