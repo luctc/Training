@@ -23,11 +23,8 @@ my-php-project/
 │   ├── images/
 │   └── uploads/             # Thư mục chứa ảnh khi upload 
 │
-├── templates/               # Các phần giao diện dùng lại (header, footer)
-│   ├── header.php
-│   └── footer.php
-│
-├── pages/                   # Các trang nội dung (home.php, about.php,…)
+├── views/                   # Các trang nội dung (home.php, about.php,…)
+│   ├── layouts/                  
 │   ├── home.php
 │   └── about.php
 │
@@ -287,6 +284,21 @@ if (age >= 18) {
     console.log("Bạn là trẻ em.");
 }
 
+const day = 3;
+let dayName = "";
+
+switch (day) {
+  case 1:
+    dayName = "Thứ Hai";
+    break;
+  case 2:
+    dayName = "Thứ Ba";
+    break;
+  default:
+    dayName = "Không hợp lệ";
+}
+console.log("Hôm nay là:", dayName);
+
 
 
 (*) Vòng lặp:
@@ -294,9 +306,35 @@ if (age >= 18) {
 vd: for (let i = 0; i < 10; i++) {
     console.log(i);
 }
+
 - while
+vd: let i = 1;
+while (i <= 5) {
+  console.log("Lần thứ", i);
+  i++;
+}
+// In ra: Lần thứ 1 -> Lần thứ 5
+
+
 - do while
+vd: let j = 6;
+do {
+  console.log("Chạy ít nhất 1 lần, j =", j);
+  j++;
+} while (j <= 5);
+// In ra: "Chạy ít nhất 1 lần, j = 6"
+
+
 - foreach
+vd: const students = ['Lực', 'Tùng', 'Trường'];
+
+students.forEach((student, index) => {
+  console.log(`${index + 1}. Tên sinh viên: ${student}`);
+});
+// In ra:
+// 1. Tên sinh viên: Lục
+// 2. Tên sinh viên: Tùng
+// 3. Tên sinh viên: Trường
 
 
 
