@@ -31,8 +31,13 @@
                 <td><?= $student['address'] ?></td>
                 <td><?= $student['class_name'] ?></td>
                 <td class="d-flex">
-                    <a href="index.php?act=students/edit&id=<?= $student['id'] ?>" class="btn btn-warning">Edit</a>
-                    <a href="index.php?act=students/destroy&id=<?= $student['id'] ?>" class="btn btn-danger">Delete</a>
+                    <a href="index.php?act=students/show&id=<?= $student['student_id'] ?>" class="btn btn-success"><i class="bi bi-eye"></i></a>
+                    <a href="index.php?act=students/edit&id=<?= $student['student_id'] ?>" class="btn btn-warning mx-2"><i class="bi bi-pencil-square text-light"></i></a>
+                    <!-- <a href="index.php?act=students/destroy&id=<?= $student['student_id'] ?>" class="btn btn-danger">Delete</a> -->
+                    <form action="index.php?act=students/destroy" method="post">
+                        <input type="hidden" name="id" value="<?= $student['student_id'] ?>">
+                        <button type="submit" onclick="return confirm('Bạn có muốn xóa hay không?')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                    </form>
                 </td>
             </tr>
         <?php endforeach; ?>
