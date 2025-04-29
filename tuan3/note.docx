@@ -1,0 +1,29 @@
+(*) SQL Injection là gì?
+SQL Injection xảy ra khi dữ liệu người dùng nhập vào được đưa trực tiếp vào câu truy vấn SQL mà không kiểm tra 
+hoặc làm sạch, từ đó kẻ tấn công có thể chèn mã SQL độc hại để:
+- Đọc dữ liệu không được phép.
+- Xóa hoặc sửa dữ liệu trong database.
+- Đăng nhập không cần mật khẩu
+- Gây sập hệ thống.
+
+/project
+│
+├── /app
+│   ├── /controllers
+│   │   └── UserController.php
+│   ├── /models
+│   │   └── User.php
+│   ├── /views
+│   │   └── user/
+│   │       └── index.php
+│
+├── /core
+│   ├── App.php              ← Router
+│   ├── Controller.php       ← BaseController
+│   └── Database.php         ← Kết nối PDO
+│
+├── /public
+│   └── index.php            ← Điểm vào ứng dụng
+│
+└── /config
+    └── config.php           ← Cấu hình database
